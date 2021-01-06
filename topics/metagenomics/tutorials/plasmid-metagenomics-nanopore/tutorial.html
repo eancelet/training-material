@@ -5,16 +5,6 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Antibiotic resistance detection</title>
-        
-            <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-45719423-18' , 'auto');
-    ga('send', 'pageview');
-</script>
-        
         <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
         <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
@@ -375,8 +365,8 @@
             <ul>
                 <div class="supporting_material">
                 
-                    <li class="btn btn-default supporting_material"><a href="/training-material/topics/metagenomics/slides/introduction.html" title="Introduction slides">
-                        <i class="fab fa-slideshare" aria-hidden="true"></i><span class="visually-hidden">slides</span> Introduction slides
+                    <li class="btn btn-default supporting_material"><a href="/training-material/topics/metagenomics/slides/introduction.html" title="Topic Overview slides">
+                        <i class="fab fa-slideshare" aria-hidden="true"></i><span class="visually-hidden">slides</span> Topic Overview slides
                     </a></li>
                 
 
@@ -421,8 +411,6 @@
             </a>
         </li>
     
-    
-        
     
         
     
@@ -515,8 +503,6 @@
         
     
         
-    
-        
         <a class="dropdown-item" href="https://nanopore.usegalaxy.eu/" title="NanoGalaxy">
             NanoGalaxy
         </a>
@@ -547,6 +533,10 @@
         
     
         
+        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
+            UseGalaxy.no
+        </a>
+        
     
         
     
@@ -563,7 +553,7 @@
             </ul>
             
 
-            <p><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Oct 31, 2020 </p>
+            <p><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jan 6, 2021 </p>
         </blockquote>
 
         <div class="container">
@@ -761,7 +751,7 @@ report page.</p>
   <h3 id="hands_on-hands-on-plotting-scripts-for-long-read-sequencing-data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Plotting scripts for long read sequencing data</h3>
 
   <ol>
-    <li><span class="tool" data-tool="tool toolshed.g2.bx.psu.edu/repos/iuc/nanoplot/nanoplot/1.28.2+galaxy1" title="Tested with tool toolshed.g2.bx.psu.edu/repos/iuc/nanoplot/nanoplot/1.28.2+galaxy1"><strong>Nanoplot</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: tool <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/nanoplot/nanoplot/1.28.2+<span class="notranslate">galaxy</span>1</span></span>  with the following parameters
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/nanoplot/nanoplot/1.28.2+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/nanoplot/nanoplot/1.28.2+galaxy1"><strong>Nanoplot</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/nanoplot/nanoplot/1.28.2+<span class="notranslate">galaxy</span>1</span></span>  with the following parameters
       <ul>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Select multifile mode”</em>: <code class="language-plaintext highlighter-rouge">batch</code></li>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Type of the file(s) to work on”</em>: <code class="language-plaintext highlighter-rouge">fasta</code></li>
@@ -807,13 +797,18 @@ plot the read length distribution of each sample:
 
 <h2 id="pairwise-alignment-using-minimap2">Pairwise alignment using Minimap2</h2>
 
-<p>In this experiment we used Nanopore sequencing; this means that sequencing results in long <span class="notranslate">reads</span> with overlap.
+<p>In this experiment we used Nanopore sequencing; this means sequencing results with long <span class="notranslate">reads</span>, and significant overlaps between those <span class="notranslate">reads</span>.
 To find this overlap, Minimap2 is used. Minimap2 is a sequence alignment program that can be used for different
 purposes, but in this case we’ll use it to find overlaps between long <span class="notranslate">reads</span> with an error rate up to ~15%.
-Typical other use cases for Minimap2 include: (1) <span class="notranslate">mapping</span> PacBio or Oxford Nanopore genomic <span class="notranslate">reads</span> to the human genome;
-(2) splice-aware alignment of PacBio Iso-Seq or Nanopore c<span class="notranslate">DNA</span> or Direct <span class="notranslate">RNA</span> <span class="notranslate">reads</span> against a reference genome;
-(3) aligning Illumina single- or paired-end <span class="notranslate">reads</span>; (4) assembly-to-assembly alignment; (5) full-genome alignment
-between two closely related species with divergence below ~15%.</p>
+Typical other use cases for Minimap2 include:</p>
+
+<ol>
+  <li><span class="notranslate">mapping</span> PacBio or Oxford Nanopore genomic <span class="notranslate">reads</span> to the human genome</li>
+  <li>splice-aware alignment of PacBio Iso-Seq or Nanopore c<span class="notranslate">DNA</span> or Direct <span class="notranslate">RNA</span> <span class="notranslate">reads</span> against a reference genome</li>
+  <li>aligning Illumina single- or paired-end <span class="notranslate">reads</span></li>
+  <li>assembly-to-assembly alignment</li>
+  <li>full-genome alignment between two closely related species with divergence below ~15%.</li>
+</ol>
 
 <p>Minimap2 is faster and more accurate than mainstream long-read mappers such as BLASR, BWA-MEM, NGMLR and GMAP and
 therefore widely used for Nanopore alignment. Detailed evaluations of Minimap2 are available in
@@ -835,7 +830,7 @@ the Minimap2 publication (<a class="citation" href="#Li2018">Li 2018</a>).</p>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Single or Paired-end <span class="notranslate">reads</span>”</em>: <code class="language-plaintext highlighter-rouge">Single</code>
           <ul>
             <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Select fastq dataset”</em>: The <code class="language-plaintext highlighter-rouge">Plasmids</code> dataset collection</li>
-            <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Select a profile of preset options”</em>: <code class="language-plaintext highlighter-rouge">Oxford Nanopore all-vs--all overlap <span class="notranslate">mapping</span></code></li>
+            <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Select a profile of preset options”</em>: <code class="language-plaintext highlighter-rouge">Oxford Nanopore all-vs-all overlap <span class="notranslate">mapping</span></code></li>
           </ul>
         </li>
         <li>In the section <strong>Set advanced output options</strong>:
@@ -951,8 +946,9 @@ It takes all-vs-all read self-<span class="notranslate">mapping</span>s (typical
 <p>Different from mainstream assemblers, miniasm does not have a consensus step.
 It simply concatenates pieces of read sequences to generate the final sequences.
 The optimal case would be to recreate a complete chromosome or plasmid.
-Thus the per-base error rate is similar to the raw input <span class="notranslate">reads</span>.
-<img src="../../images/plasmid-metagenomics-nanopore/Miniasm.png" alt="Pairwise alignment" /></p>
+Thus the per-base error rate is similar to the raw input <span class="notranslate">reads</span>.</p>
+
+<figure id="figure-2"><img src="../../images/plasmid-metagenomics-nanopore/Miniasm.png" alt="Pairwise alignment" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Sequencing and Assembly Schematic. A longer sequence is constructed from many smaller, overlapping fragments. These are aligned and reconstructed during assembly to produce the best guess assembly.</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
   <h3 id="hands_on-hands-on-de-novo-assembly"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: De novo assembly</h3>
@@ -989,9 +985,9 @@ a	utg000001l	0	channel_364_204a2254-2b6f-4f10-9ec5-6d40f0b870e4_template:101-445
 
 <h2 id="remapping-using-minimap2">Re<span class="notranslate">mapping</span> using Minimap2</h2>
 
-<p>The Assembly graph created can be used for <span class="notranslate">mapping</span> again with Minimap2, but first the graph should be transformed to FASTA format.</p>
+<p>Re<span class="notranslate">mapping</span> is done with the original <span class="notranslate">reads</span>, using the Miniasm assembly as a reference, in order to improve the consensus base call per position. This is used by <strong>Racon</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> for consensus construction. This is done as some <span class="notranslate">reads</span> which might not have mapped well during the consensus calling, will now map to your scaffold.</p>
 
-<p>Re<span class="notranslate">mapping</span> is done with the original <span class="notranslate">reads</span>, using the Miniasm assembly as a reference, in order to improve the consensus base call per position. This is used by <strong>Racon</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> for consensus construction.</p>
+<p>The Assembly graph created can be used for <span class="notranslate">mapping</span> again with Minimap2, but first the graph should be transformed to FASTA format.</p>
 
 <blockquote class="notranslate hands_on">
   <h3 id="hands_on-hands-on-pairwise-sequence-alignment-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Pairwise sequence alignment</h3>
@@ -1124,7 +1120,7 @@ This is not the case for most of the samples, but we will improve our assemblies
 
 <p>For example, the assembly for sample RB01 looks something like this (your assembly will look a bit different due to randomness in several of the tools):</p>
 
-<figure id="figure-2"><img src="../../images/plasmid-metagenomics-nanopore/bandage_pre_unicycler.png" alt="Bandage output for sample RB01" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Bandage output for sample RB01. Large fragments were assembled, but not the full circular plasmid molecules.</figcaption></figure>
+<figure id="figure-3"><img src="../../images/plasmid-metagenomics-nanopore/bandage_pre_unicycler.png" alt="Bandage output for sample RB01" /><figcaption><span class="figcaption-prefix">Figure 3:</span> Bandage output for sample RB01. Large fragments were assembled, but not the full circular plasmid molecules.</figcaption></figure>
 
 <p>As you can see from these Bandage outputs, we were able to assemble our data into fairly large fragments, but were not quite successful in assembling the full (circular) plasmid sequences.</p>
 
@@ -1349,7 +1345,7 @@ and compiles a summary report of detected antimicrobial resistance genes.</p>
 <h2 id="card-database">CARD database</h2>
 <p>To get more information about these antibiotic resistant genes, you can check the <a href="https://card.mcmaster.ca">CARD database</a> (<strong>C</strong>omprehensive <strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>D</strong>atabase) (<a class="citation" href="#Jia2016">Jia <i>et al.</i> 2016</a>)</p>
 
-<figure id="figure-3"><img src="../../images/plasmid-metagenomics-nanopore/card_database.png" alt="Screenshot of the CARD database" /><figcaption><span class="figcaption-prefix">Figure 3:</span> Screenshot of the CARD database interface. CARD gives information about the antibiotic resistance genes, as well as links to relevant publications.</figcaption></figure>
+<figure id="figure-4"><img src="../../images/plasmid-metagenomics-nanopore/card_database.png" alt="Screenshot of the CARD database" /><figcaption><span class="figcaption-prefix">Figure 4:</span> Screenshot of the CARD database interface. CARD gives information about the antibiotic resistance genes, as well as links to relevant publications.</figcaption></figure>
 
 <blockquote class="question">
   <h3 id="question-question-6"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Question</h3>
@@ -1377,7 +1373,6 @@ may provide further insight.</p>
 <p>You have worked your way through the following pipeline:</p>
 
 <p><img src="../../images/plasmid-metagenomics-nanopore/Workflow.png" alt="Workflow representation of this tutorial" /></p>
-
 
 
                     
@@ -1682,7 +1677,7 @@ may provide further insight.</p>
                     <h1>Citing this Tutorial</h1>
                     <p>
                         <ol>
-                            <li id="citation-text">Willem de Koning, Saskia Hiltemann, 2020 <b>Antibiotic resistance detection (Galaxy Training Materials)</b>. <a href="/training-material/topics/metagenomics/tutorials/plasmid-metagenomics-nanopore/tutorial.html">/training-material/topics/metagenomics/tutorials/plasmid-metagenomics-nanopore/tutorial.html</a> Online; accessed TODAY
+                            <li id="citation-text">Willem de Koning, Saskia Hiltemann, 2021 <b>Antibiotic resistance detection (Galaxy Training Materials)</b>. <a href="/training-material/topics/metagenomics/tutorials/plasmid-metagenomics-nanopore/tutorial.html">/training-material/topics/metagenomics/tutorials/plasmid-metagenomics-nanopore/tutorial.html</a> Online; accessed TODAY
                             </li>
                             <li>
                             Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1699,9 +1694,9 @@ may provide further insight.</p>
 <code id="citation-code">@misc{metagenomics-plasmid-metagenomics-nanopore,
     author = "Willem de Koning and Saskia Hiltemann",
     title = "Antibiotic resistance detection (Galaxy Training Materials)",
-    year = "2020",
-    month = "10",
-    day = "31"
+    year = "2021",
+    month = "01",
+    day = "06"
     url = "\url{/training-material/topics/metagenomics/tutorials/plasmid-metagenomics-nanopore/tutorial.html}",
     note = "[Online; accessed TODAY]"
 }

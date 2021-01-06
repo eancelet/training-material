@@ -5,16 +5,6 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Adding auto-generated video to your slides</title>
-        
-            <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-45719423-18' , 'auto');
-    ga('send', 'pageview');
-</script>
-        
         <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
         <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
@@ -321,8 +311,8 @@
             <ul>
                 <div class="supporting_material">
                 
-                    <li class="btn btn-default supporting_material"><a href="/training-material/topics/contributing/slides/introduction.html" title="Introduction slides">
-                        <i class="fab fa-slideshare" aria-hidden="true"></i><span class="visually-hidden">slides</span> Introduction slides
+                    <li class="btn btn-default supporting_material"><a href="/training-material/topics/contributing/slides/introduction.html" title="Topic Overview slides">
+                        <i class="fab fa-slideshare" aria-hidden="true"></i><span class="visually-hidden">slides</span> Topic Overview slides
                     </a></li>
                 
 
@@ -356,7 +346,7 @@
             </ul>
             
 
-            <p><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Oct 20, 2020 </p>
+            <p><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jan 6, 2021 </p>
         </blockquote>
 
         <div class="container">
@@ -440,35 +430,65 @@ Configuration management manages the configuration of machines; it specifies wha
 
 <p>Every sentence must end with punctuation like <code class="language-plaintext highlighter-rouge">.</code> or <code class="language-plaintext highlighter-rouge">?</code> or even <code class="language-plaintext highlighter-rouge">!</code> if you’re feeling excited. We merge all lines of the presenter notes before having them spoken by Polly. If you forget the punctuation it will be one long run-on sentence.</p>
 
-<h3 id="abbreviations-and-weird-names">Abbreviations and “Weird” Names</h3>
+<h3 id="abbreviations">Abbreviations</h3>
 
-<p>In the captions you will want to spell out abbreviations</p>
+<p>These are generally fine as-is. Make sure they are all caps though.</p>
 
-<blockquote class="code-2col">
-  <blockquote class="code-in">
-    <p><strong>Good</strong>
-This role deploys C V M F S.</p>
-  </blockquote>
-
-  <blockquote class="code-out">
-    <p><strong>Bad</strong>
+<blockquote class="code-in">
+  <p><strong>Good</strong>
 This role deploys CVMFS.</p>
-  </blockquote>
 </blockquote>
 
-<p>For many terms we read them differently than they’re written, e.g. ‘src’ vs ‘source’. Most of us would pronounce it like the latter, even though it isn’t spelt that way. Our speaking robot doesn’t know what we mean, so we need to spell it out properly.</p>
+<h3 id="weird-names">“Weird” Names</h3>
 
-<blockquote class="code-2col">
-  <blockquote class="code-in">
-    <p><strong>Good</strong>
-Copy copies a file from src on localhost…</p>
-  </blockquote>
+<p>In the captions you will want to teach the GTN how to pronounce these words by editing <code class="language-plaintext highlighter-rouge">bin/ari-map.yml</code> to provide your definition.</p>
 
-  <blockquote class="code-out">
-    <p><strong>Bad</strong>
-Copy copies a file from source on localhost…</p>
-  </blockquote>
-</blockquote>
+<p>E.g.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Pronunciation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SQLAlchemy</td>
+      <td>SQL alchemy</td>
+    </tr>
+    <tr>
+      <td>FastQC</td>
+      <td>fast QC</td>
+    </tr>
+    <tr>
+      <td>nginx</td>
+      <td>engine X</td>
+    </tr>
+    <tr>
+      <td>gxadmin</td>
+      <td>GX admin</td>
+    </tr>
+    <tr>
+      <td>/etc</td>
+      <td>/ E T C</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The same applies to the many terms we read differently from how they are written, e.g. ‘src’ vs ‘source’. Most of us would pronounce it like the latter, even though it isn’t spelt that way. Our speaking robot doesn’t know what we mean, so we need to spell it out properly.</p>
+
+<p>So we write the definition in the <a href="https://github.com/galaxyproject/training-material/blob/master/bin/ari-map.yml"><code class="language-plaintext highlighter-rouge">bin/ari-map.yml</code></a> file.</p>
+
+<h3 id="other-considerations">Other Considerations</h3>
+
+<p>(<em>Written 2020-12-16, things may have changed since.</em>)</p>
+
+<p>Be sure to check the pronunciation of the slides. There are known issues with <a href="https://en.wikipedia.org/wiki/Heteronym_(linguistics)">heteronyms</a>, words spelt the same but having different pronunciation and meaning. Consider “read” for a classic example, or <a href="https://en.wiktionary.org/wiki/analyses#English">“analyses”</a> for one that comes up often in the GTN. “She analyses data” and “Multiple analyses” are pronounced quite differently based on their usage in sentences. See the <a href="https://en.wiktionary.org/wiki/analyses#English">wiktionary</a> page for more information, or the <a href="https://en.wiktionary.org/wiki/Category:English_heteronyms">list of English heteronyms</a> you might want to be aware of.</p>
+
+<p>This becomes an issue for AWS Polly and Mozilla’s TTS which both don’t have sufficient context sometimes to choose between the two pronunciations. You’ll find that “many analyses” is pronounced correctly while “multiple analyses” isn’t.</p>
+
+<p>Oftentimes the services don’t understand part of speech, so by adding adjectives to analyses, you confuse the engine in to thinking it should be the third person singular pronunciation. This is probably because it only has one or two words of context ahead of the word to be pronounced.</p>
 
 <h2 id="enable-the-video">Enable the Video</h2>
 
@@ -543,7 +563,7 @@ Copy copies a file from source on localhost…</p>
                     <h1>Citing this Tutorial</h1>
                     <p>
                         <ol>
-                            <li id="citation-text">Helena Rasche, 2020 <b>Adding auto-generated video to your slides (Galaxy Training Materials)</b>. <a href="/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html</a> Online; accessed TODAY
+                            <li id="citation-text">Helena Rasche, 2021 <b>Adding auto-generated video to your slides (Galaxy Training Materials)</b>. <a href="/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html</a> Online; accessed TODAY
                             </li>
                             <li>
                             Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -560,9 +580,9 @@ Copy copies a file from source on localhost…</p>
 <code id="citation-code">@misc{contributing-slides-with-video,
     author = "Helena Rasche",
     title = "Adding auto-generated video to your slides (Galaxy Training Materials)",
-    year = "2020",
-    month = "10",
-    day = "20"
+    year = "2021",
+    month = "01",
+    day = "06"
     url = "\url{/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html}",
     note = "[Online; accessed TODAY]"
 }

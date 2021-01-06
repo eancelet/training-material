@@ -13,14 +13,8 @@
     <meta charset="utf-8">
     <title>Galaxy Code Architecture</title>
     
-        <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-45719423-18' , 'auto');
-    ga('send', 'pageview');
-</script>
+        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+
     
     <link rel="stylesheet" href="/training-material/assets/css/slides.css">
     <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
@@ -192,6 +186,7 @@ slide to change on the other. Useful when presenting.
 
 
 
+
 ### &lt;i class=&quot;far fa-question-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;question&lt;/span&gt; Questions
 
 
@@ -203,6 +198,7 @@ slide to change on the other. Useful when presenting.
 
 
 ---
+
 
 
 ### &lt;i class=&quot;fas fa-bullseye&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;objectives&lt;/span&gt; Objectives
@@ -286,6 +282,8 @@ More links we'll mention as we go through the slides:
 - https://gitter.im/Galaxy-Training-Network/Lobby
 - https://gitter.im/biocontainers/Lobby
 - https://gitter.im/bioconda/Lobby
+
+Working group chats linked at https://galaxyproject.org/community/wg/.
 
 ---
 
@@ -593,6 +591,16 @@ All repository goverance is done in the open on GitHub via Pull Requests and vot
 
 ---
 
+class: enlarge150
+
+### Working Groups
+
+https://galaxyproject.org/community/wg/
+
+&gt; &quot;Galaxy has grown a lot over the years, going from a project at one university in 2005 to the global community it is today. Several parts of the Galaxy ecosystem have become avowedly and obviously community driven during that time, including tools, code, training, and several other international efforts. Galaxy Working Groups push this global model to other areas of Galaxy as well.&quot;
+
+---
+
 class: enlarge200
 
 ### Code of Conduct (CODE_OF_CONDUCT.md)
@@ -630,6 +638,53 @@ The tags are described in detail in [issues.rst](https://github.com/galaxyprojec
 ![Galaxy CI](../../images/core_ci.png)
 
 If you get Red Xs - take a second to ponder whether they make sense and don't be afraid to ask, it is a complex system with a lot of noise!
+
+---
+
+### Linting and Code Formatting
+
+Part of the Galaxy CI process includes linting both the backend Python and frontend ES 6 code.
+This linting process captures many common problems as well as enforcing a common code style.
+
+The output reports from the CI process are relatively straightforward, but it is a good process
+to lint changes before opening pull requests for them. The Python linter can be run using `tox`
+as follows.
+
+```
+$ tox -e lint
+```
+
+The client code formatting guidelines are much more strict but as a result can be applied
+automatically for very consistent code. Execute the `client-format` make command to format
+the code and then the `client-lint` command to check the result.
+
+```
+$ make client-format
+$ make client-lint
+```
+
+---
+
+### mypy and Python Types
+
+Starting with release 21.01, we are experimenting with adding type annotations to our Python
+code. We are not enforcing typing for imported library code and [mypy](https://mypy.readthedocs.io/en/stable/) does a fair job inferring
+types in most situations, so this process should be relatively transparent to contributors.
+
+If there are problems with typing, the CI should produce fairly explicit output about how to
+correct problems. These problems generally just require a single type annotation - feel free
+to request help on a pull request for what that should look like.
+
+To run a subset of the python type checking locally, `tox` again can be used:
+
+```
+$ tox -e mypy
+```
+
+A quick overview about why one might want to add type annotation to Python code and how to use
+them can be found on this [blog post](https://dev.to/dstarner/using-pythons-type-annotations-4cfe).
+Additional useful resources include [this cheat sheet from mypy](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
+and the Python docs for the [typing module](https://docs.python.org/3/library/typing.html).
 
 ---
 

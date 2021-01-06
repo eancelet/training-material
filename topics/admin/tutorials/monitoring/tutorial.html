@@ -5,16 +5,6 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Galaxy Monitoring with Telegraf and Grafana</title>
-        
-            <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-45719423-18' , 'auto');
-    ga('send', 'pageview');
-</script>
-        
         <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
         <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
@@ -501,8 +491,6 @@
                     
                         
                     
-                        
-                    
                 
                     
                         
@@ -546,8 +534,6 @@
                                 
                             
                             </li>
-                        
-                    
                         
                     
                         
@@ -675,8 +661,6 @@
                     
                         
                     
-                        
-                    
                 
             </ul>
         
@@ -716,7 +700,7 @@
             </ul>
             
 
-            <p><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jun 20, 2020 </p>
+            <p><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jan 6, 2021 </p>
         </blockquote>
 
         <div class="container">
@@ -776,7 +760,7 @@
 
 <p><a href="https://www.influxdata.com/">InfluxDB</a> provides the data storage for monitoring. It is a <abbr title="Time Series Database">TSDB</abbr>, so it has been designed specifically for storing time-series data like monitoring and metrics. There are other TSBD options for storing data but we have had good experiences with this one. TSBDs commonly feature some form of automatic data expiration after a set period of time. In InfluxDB these are known as “retention policies”. Outside of this feature, it is a <a href="https://docs.influxdata.com/influxdb/v1.7/concepts/crosswalk/">relatively normal database</a>.</p>
 
-<p>The available Ansible roles for InfluxDB unfortunately do not support configuring databases or users or retention policies. Ansible itself contains <a href="https://docs.ansible.com/ansible/latest/modules/list_of_database_modules.html#influxdb">several modules</a> you can use to write your own roles, but nothing generic. Use<span class="notranslate">Galaxy</span>.eu wrote <a href="https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/roles/hxr.influxdb/tasks/main.yml">their own role</a> for setting up their InfluxDB database, but it is not reusable enough for it to be used here yet. If you plan to automate your entire setup, this tutorial can perhaps provide inspiration for writing your own Ansible role. However, in this case it is sufficient to manually create your users and retention policies as a one-off task.</p>
+<p>The available Ansible roles for InfluxDB unfortunately do not support configuring databases or users or retention policies. Ansible itself contains <a href="https://docs.ansible.com/ansible/2.9/modules/list_of_database_modules.html#influxdb">several modules</a> you can use to write your own roles, but nothing generic. Use<span class="notranslate">Galaxy</span>.eu wrote <a href="https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/roles/hxr.influxdb/tasks/main.yml">their own role</a> for setting up their InfluxDB database, but it is not reusable enough for it to be used here yet. If you plan to automate your entire setup, this tutorial can perhaps provide inspiration for writing your own Ansible role. However, in this case it is sufficient to manually create your users and retention policies as a one-off task.</p>
 
 <blockquote class="notranslate hands_on">
   <h3 id="hands_on-hands-on-setting-up-influxdb"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Setting up InfluxDB</h3>
@@ -1645,7 +1629,7 @@ queue-overview,tool_id=iuc/mothur_pre_cluster/mothur_pre_cluster,tool_version=1.
                     <h1>Citing this Tutorial</h1>
                     <p>
                         <ol>
-                            <li id="citation-text">Helena Rasche, 2020 <b>Galaxy Monitoring with Telegraf and Grafana (Galaxy Training Materials)</b>. <a href="/training-material/topics/admin/tutorials/monitoring/tutorial.html">/training-material/topics/admin/tutorials/monitoring/tutorial.html</a> Online; accessed TODAY
+                            <li id="citation-text">Helena Rasche, 2021 <b>Galaxy Monitoring with Telegraf and Grafana (Galaxy Training Materials)</b>. <a href="/training-material/topics/admin/tutorials/monitoring/tutorial.html">/training-material/topics/admin/tutorials/monitoring/tutorial.html</a> Online; accessed TODAY
                             </li>
                             <li>
                             Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1662,9 +1646,9 @@ queue-overview,tool_id=iuc/mothur_pre_cluster/mothur_pre_cluster,tool_version=1.
 <code id="citation-code">@misc{admin-monitoring,
     author = "Helena Rasche",
     title = "Galaxy Monitoring with Telegraf and Grafana (Galaxy Training Materials)",
-    year = "2020",
-    month = "06",
-    day = "20"
+    year = "2021",
+    month = "01",
+    day = "06"
     url = "\url{/training-material/topics/admin/tutorials/monitoring/tutorial.html}",
     note = "[Online; accessed TODAY]"
 }
